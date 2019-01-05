@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>demo</groupId>
+    <artifactId>reproduce-moco-with-jacoco</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <jacoco.maven.plugin.version>0.7.8</jacoco.maven.plugin.version>
+    </properties>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.github.dreamhead/moco-junit -->
+        <dependency>
+            <groupId>com.github.dreamhead</groupId>
+            <artifactId>moco-junit</artifactId>
+            <version>0.12.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.github.dreamhead/moco-runner -->
+        <dependency>
+            <groupId>com.github.dreamhead</groupId>
+            <artifactId>moco-runner</artifactId>
+            <version>0.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>fluent-hc</artifactId>
+            <version>4.5.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+  <build>
+
+    <plugins>
+        <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>${jacoco.maven.plugin.version}</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>prepare-agent</goal>
+                    </goals>
+                </execution>
+                <execution>
+                    <id>report</id>
+                    <phase>prepare-package</phase>
+                    <goals>
+                        <goal>report</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+  </build>
+
+</project>
